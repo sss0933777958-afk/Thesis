@@ -1,0 +1,5 @@
+# LaTeX 編譯產物
+latex/build/
+# Windows 誤產生的空檔 / Office 鎖定檔
+NUL
+~$*

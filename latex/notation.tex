@@ -1,0 +1,74 @@
+% !TeX root = main.tex
+% =====================================================================
+% 符號巨集 —— 依 reference/Lumped parameter model.pdf (T-Mech) notation
+% 規則：內文一律用本檔巨集，不手打符號；新增符號須經使用者同意。
+% 慣例：向量/矩陣 粗體正體；純量 斜體；左上標 B = 以 b 為輸出；
+%       下標 I = current-based、V = sensor-voltage-based；
+%       \hat = 校正估計值；\bar = 正規化量。
+% =====================================================================
+
+% ---- 通用工具 ----
+\newcommand{\vect}[1]{\mathbf{#1}}             % 粗體正體向量/矩陣
+\newcommand{\gvect}[1]{\boldsymbol{#1}}         % 粗體希臘字母
+\newcommand{\lsup}[2]{{}^{#1}\!#2}              % 左上標，如 \lsup{B}{g}
+
+% ---- 幾何 / 位置 (§II-A, II-B) ----
+\newcommand{\np}{n_p}                           % 磁極數
+\newcommand{\pvec}{\vect{p}}                    % 空間點位置 p
+\newcommand{\pc}{\vect{p}_c}                    % 磁荷位置 p_c
+\newcommand{\pbar}{\bar{\vect{p}}}              % 無因次位置 p̄ = p/ℓ
+\newcommand{\pcbar}{\bar{\vect{p}}_c}           % 無因次磁荷位置
+\newcommand{\ellhat}{\hat{\ell}}                % 校正 characteristic length
+\newcommand{\muo}{\mu_o}                        % 真空磁導率（下標 o）
+
+% ---- 磁荷模型 (1)-(4) ----
+\newcommand{\bvec}{\vect{b}}                    % magnetic flux density
+\newcommand{\scvec}{\vect{s}_c}                 % spatial distribution vector（\sc 為 LaTeX 既有指令）
+\newcommand{\Smat}{\vect{S}}                    % spatial-distribution matrix (3x6)
+\newcommand{\Qvec}{\vect{Q}}                    % magnetic-charge vector
+\newcommand{\Ivec}{\vect{I}}                    % input current vector
+\newcommand{\Phivec}{\gvect{\Phi}}              % pole-tip flux vector
+\newcommand{\NT}{N_T}                           % 線圈匝數
+\newcommand{\Ra}{\mathcal{R}_a}                 % lumped magnetic reluctance
+\newcommand{\Kmat}{\vect{K}}                    % flux-distribution matrix
+\newcommand{\Kbar}{\bar{\vect{K}}}              % 正規化 flux-distribution matrix
+
+% ---- Charge-location model (5)-(7) ----
+\newcommand{\Umat}{\vect{U}}                    % 標準基底矩陣 (3x6)
+\newcommand{\Emat}{\vect{E}}                    % offset matrix (3x6)
+\newcommand{\Ehat}{\hat{\vect{E}}}
+\newcommand{\evec}{\vect{e}}                    % 17x1 offset 參數
+\newcommand{\ehat}{\hat{\vect{e}}}
+\newcommand{\BgI}{\lsup{B}{g}_I}                % actuation gain (current)
+\newcommand{\BgIhat}{\lsup{B}{\hat{g}}_I}
+\newcommand{\BHI}{\lsup{B}{\vect{H}}_I}         % input-current-flux matrix
+\newcommand{\BHIhat}{\lsup{B}{\hat{\vect{H}}}_I}
+\newcommand{\Kbarhat}{\hat{\bar{\vect{K}}}}
+
+% ---- 校正 (Phase 1-5, (8)-(15)) ----
+\newcommand{\Nc}{N_c}                           % 空間校正點數
+\newcommand{\NI}{N_I}                           % 激發組數
+\newcommand{\Fmat}{\vect{F}}                    % combined excitation matrix
+\newcommand{\Wmat}{\vect{W}}                    % spatial-distribution weighting matrix
+\newcommand{\btilde}{\tilde{\vect{b}}}          % 投影 S^T b
+\newcommand{\etavec}{\gvect{\eta}}              % W^{-1} sum b̃
+\newcommand{\Thetamat}{\gvect{\Theta}}          % [η_1 ... η_NI]
+
+% ---- Sensor-voltage-based model (16)-(23) ----
+\newcommand{\vvec}{\vect{v}}                    % Hall sensor voltage vector
+\newcommand{\Vmat}{\vect{V}}                    % combined voltage matrix
+\newcommand{\Mmat}{\vect{M}}                    % sensor-network measurement matrix
+\newcommand{\Mbar}{\bar{\vect{M}}}
+\newcommand{\Mbarhat}{\hat{\bar{\vect{M}}}}
+\newcommand{\BgV}{\lsup{B}{g}_V}
+\newcommand{\BgVhat}{\lsup{B}{\hat{g}}_V}
+\newcommand{\BHV}{\lsup{B}{\vect{H}}_V}
+\newcommand{\BHVhat}{\lsup{B}{\hat{\vect{H}}}_V}
+\newcommand{\sH}{s_H}                           % Hall sensor 靈敏度
+\newcommand{\nhat}{\hat{\vect{n}}}              % sensor 表面法向量
+
+% ---- 性能指標 (24)-(30) ----
+\newcommand{\MAEP}{\mathrm{MAEP}}
+\newcommand{\BGI}{\lsup{B}{\vect{G}}_I}         % position-dependent gain matrix (3x6)
+\newcommand{\Eff}{\mathcal{E}}                  % efficiency index
+\newcommand{\Iso}{\kappa}                       % isotropy index

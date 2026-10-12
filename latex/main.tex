@@ -1,0 +1,152 @@
+\documentclass[]{nthu_thesis}
+
+% set proper margins
+\geometry{
+  a4paper,
+  left=3cm,
+  right=3cm,
+  top=3cm,
+  bottom=2.5cm,
+  bindingoffset=0mm,
+  headheight=0pt,
+  headsep=0pt,
+  footskip=18pt
+}
+\setlength{\hoffset}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparsep}{0pt}
+
+% ---- 本論文自訂 ----
+\input{notation}               % 符號巨集（依 T-Mech paper notation）
+\graphicspath{{./figures/}}    % cls 末行把路徑設成 ./images/，這裡改回 figures/
+
+
+\begin{document}
+\pagestyle{plain} %This is the default style for most document classes. It places the page number centered in the footer, with an empty header.
+
+%%% Necessary fields for this thesis data %%%
+% Add your custom class definitions here if any
+
+\newcommand{\degreeZH}{碩}  % 畢業學位，碩 for masters 或 博 for PHD
+\newcommand{\degreeEN}{Master's Thesis}  %  Fill in your degree "Master's Thisis" for masters 或 "Doctoral Dissertation" for PHD
+\newcommand{\titleZH}{這裡填入論文中文題名} % 此括弧內填入論文中文標題Chinese title here
+\newcommand{\titleEN}{Type English Title Here} % 此括弧內填入論文英文標題
+\newcommand{\instituteZH}{動力機械工程學系} % 此括弧內填入畢業生所屬學系班
+\newcommand{\instituteEN}{Department of Power Mechanical Engineering} % Graduation Dept./Inst. Name
+\newcommand{\studentID}{114033549} %填入畢業生的學號 your student ID
+\newcommand{\studentZH}{郭建棋} % 此括弧內填入畢業生的中文名字 Graduate's Chinese Name here
+\newcommand{\studentEN}{Chien-Chi Kuo} %此括弧內填入畢業生的英文姓名 Graduate's Eng. Name here
+\newcommand{\advisorZH}{李昇憲} %此括弧內填入指導教授的中文名字，如有兩個，請自行增加
+\newcommand{\advisorEN}{Dr. Sheng-Shian Li} % 此括弧內填入 advisor's English Name
+\newcommand{\yearZH}{116} %此括弧內填入畢業年(民國) Year of ROC  ，就是口試日期的那個月
+\newcommand{\monthZH}{8} % Graduation (Oral exam) month of ROC 
+\newcommand{\yearEN}{2027} % Graduation (oral exam) Year  
+\newcommand{\monthEN}{August} % Graduation (oral Exam) month
+
+
+\input{2025Titlepage}
+%intentionally to add a blank page 
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+
+% 書名頁
+\input{2025Titlepage}
+ \let\cleardoublepage=\clearpage % Place this after \end{titlepage} for removing the blank page 
+ 
+%\restoregeometry  %back to NTHU required geometry setting
+
+% 學校條例第六點：目次不列授權書/推薦書/審定書
+% (四) 學位論文授權書
+
+\includepdf[pages=1-3, fitpaper=true,
+       keepaspectratio, pagecommand={{\thispagestyle{empty}}},offset=-0.0cm 0.0cm]{./front/Authorized agreement.pdf} %offset=+right +up
+       
+\includepdf[pages=1, angle=0, fitpaper=true,
+    keepaspectratio, pagecommand={{\thispagestyle{empty}}},offset=-0.0cm 0.0cm]{./front/Advisor Approval Form.pdf}
+
+%\cftaddtitleline{<ext>}{<kind>}{<text>}{<page>} intead of using \addcontentsline command  for without page numbering
+
+
+
+       
+% (六) 考試委員審定書（上方為 (五) 指導教授推薦書）
+
+\includepdf[pages=1, angle=0, fitpaper=true,
+       keepaspectratio, pagecommand={{\thispagestyle{empty}}},offset=-0.0cm 0.0cm]{./front/Thesis Review Form.pdf} %offset=+right +up
+
+
+\frontmatter %Use for book class 
+
+%%% Necessary 中文摘要%%%
+\chapter*{摘要}
+\addcontentsline{toc}{chapter}{摘要}
+\input{front/C_Abstract}       % 插入中文摘要於此 Insert Chinese Abstract
+%\setcounter{page}{1}  %set page begins with i
+\clearpage
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{front/Eng_Abstract}       % 插入英文摘要於此 Insert English Abstract
+\clearpage
+
+
+%\pagenumbering{roman} %set lowercase Roman numerals for page numbers if set article class
+\chapter*{致謝}
+\addcontentsline{toc}{chapter}{致謝}
+\input{front/acknowledgement}       % 致謝（Acknowledgement）
+\clearpage
+
+% 生成目錄與符號列表
+% generate Contents of Tables, lists of figures, tables, 
+\renewcommand*\contentsname{目次}
+\pagestyle{plain}
+\tableofcontents
+\addcontentsline{toc}{chapter}{目次}
+\clearpage
+
+\renewcommand*\listfigurename{圖次}
+\listoffigures  % Insert list of figures
+\addcontentsline{toc}{chapter}{圖次}
+\clearpage
+
+\renewcommand*\listtablename{表次}
+\listoftables  % Insert list of tables
+\addcontentsline{toc}{chapter}{表次}
+\clearpage
+
+
+% 論文內容Contents of Thesis
+
+\mainmatter  %for book class only
+%\pagenumbering{arabic} % already default for book class, Arabic/Indic page numbers, needed for article class
+
+\pagestyle{plain} % This is the default style for most document classes. It places the page number centered in the footer, with an empty header.
+\input{contents/chapter01}
+\input{contents/chapter02}
+\input{contents/chapter03}
+\input{contents/chapter04}
+\input{contents/chapter05}
+
+% 參考文獻  References
+
+\cleardoublepage
+\printbibliography[ heading=bibintoc,title={參考文獻} ]
+
+%\addcontentsline{toc}{chapter}{參考文獻}
+%\addcontentsline{toc}{chapter}{Bibliography}
+
+% 附錄 如果沒有附錄，可以刪除這整段
+% Appendices  if no appendix, this section can be deleted
+\renewcommand*\appendixname{附錄}
+\appendix   % Signal the start of the appendix section
+
+\chapter*{\centering{Appendices}}
+\addtocontents{toc}{\protect\contentsline {chapter}{附錄}{}{}}
+
+\input{back/appendix01}
+\input{back/appendix02}
+
+\end{document}
+
